@@ -1,5 +1,6 @@
 <?php
-define('BASE_URL', './');
+$BASE_URL = filter_input(INPUT_SERVER, 'BASE_URL', FILTER_SANITIZE_URL);
+define('BASE_URL', $BASE_URL);
 $headerPath = realpath(BASE_URL . 'templates/partials/header.php');
 include_once($headerPath);
 ?>

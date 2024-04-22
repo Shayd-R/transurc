@@ -1,5 +1,10 @@
 <?php
-define('BASE_URL', '../');
+$BASE_URL = filter_input(INPUT_SERVER, 'BASE_URL', FILTER_SANITIZE_URL);
+if ($BASE_URL !== false && $BASE_URL !== null) {
+  define('BASE_URL', $BASE_URL);
+} else {
+  define('BASE_URL', '../');
+}
 $headerPath = realpath(BASE_URL . 'templates/partials/header.php');
 include_once ($headerPath);
 ?>
@@ -59,7 +64,7 @@ include_once ($headerPath);
             frameborder="0" style="border:0; width: 100%; height: 384px;" allowfullscreen></iframe>
 
         </div>
-        
+
       </div>
 
     </div>
